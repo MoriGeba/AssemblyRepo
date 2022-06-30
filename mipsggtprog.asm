@@ -6,6 +6,24 @@
 	addi $5, $0, 25		# (2) r5 <-- 25
 	add  $2, $5, $0		# (3) r2 <-- r5
 	
+	jal ggt
 	
+	exit:
 	
+	ggt:
+	# Programm zur Berechnung des ggt von zwei zahlen
+	# $4 und $5 sind die Input register
+	# $0 ist das Ausgaberegister
 	
+	beq $4, $0, goto10	# if( r4 == 0) goto (10)
+	
+	start: 
+	beq $5, $0, goto9	# if( r5 == 0) goto (9)
+	
+	bgt $4, $5, then	# if( r4 > r5)  else jumt to then
+	sub $4, $4, $5		# r4 <-- r4 - r5
+	
+	then: 
+	sub $5, $5, $4		# r5 <-- r5 - r4
+	
+	j start			#jump to start
