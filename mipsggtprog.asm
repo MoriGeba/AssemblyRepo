@@ -1,5 +1,5 @@
 .data 
-
+	ausgabe: .ascii "Der ggT ist: "
 
 .text
 	addi $4, $0, 30		# (1) r4 <-- 30
@@ -37,7 +37,7 @@
 		j start			#jump to start
 	
 	goto9:
-		add $2, $0, $4
+		add $2, $0, $4		#register 4 in 2 kopieren
 		
 	goto10:
 		jr $ra
