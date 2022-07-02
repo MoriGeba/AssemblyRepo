@@ -1,8 +1,20 @@
-.word 
+.data 
+	text1: .asciiz "Geben sie ein Wort ein : "
+	
 
 .text
-	Einlesen:
+	#ausgabe text
+	li $v0, 4
+	la $a0, text1			
+	syscall	
 	
-	Verarbeitung:
-	
-	Ausgabe:
+				
+				
+				
+				
+				#Einlesen:
+				
+		
+				#Verarbeitung:
+		
+				#Ausgabe:
