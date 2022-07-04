@@ -8,13 +8,9 @@
 	la $a0, text1			
 	syscall	
 	
-				
-				
-				
-				
-				#Einlesen:
-				
+	#Einlesen:
 		
+	
 				#Verarbeitung:
 		
 				#Ausgabe:
