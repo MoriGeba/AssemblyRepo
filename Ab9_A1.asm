@@ -8,6 +8,9 @@
 	la $a0, text1			
 	syscall	
 	
+	li $v0, 5
+	syscall
+	
 	#Einlesen:
 		
 	
