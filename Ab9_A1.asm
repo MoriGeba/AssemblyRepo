@@ -3,17 +3,19 @@
 	
 
 .text
-	#ausgabe text
+	#ausgabe Geben sie eine Wort ein
 	li $v0, 4
 	la $a0, text1			
 	syscall	
 	
+	#Einlesen:
 	li $v0, 5
 	syscall
 	
-	#Einlesen:
-		
+	#Verarbeitung:
 	
-				#Verarbeitung:
+	
+	
+				
 		
 				#Ausgabe:
