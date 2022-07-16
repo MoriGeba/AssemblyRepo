@@ -40,5 +40,6 @@
    addi $3, $zero, 1
    j main
    
-   exit:
+  exit:
+   
    
