@@ -9,23 +9,23 @@
  
 .text
  
- # Ausgabe String text1
+ # output String text1
   la $2, 4
   la $4, text1
   syscall
  
- # Eingabe zu verschlüsselnder Text
+ # input zu verschlüsselnder Text
   la $2, 8
   la $4, input
   la $5, 40
   syscall
  
- # Ausgabe String text2
+ # output String text2
   la $2, 4
   la $4, text2
   syscall
  
- # Eingabe Key
+ # input Key
   la $2, 5
   syscall
   la $8, ($2)
@@ -42,6 +42,7 @@
    addi $3, $3, 1
    j main
    
+ # Output 
   exit:
    la $2, 4
    la $4, outputtxt
