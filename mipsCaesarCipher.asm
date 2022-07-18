@@ -36,6 +36,7 @@
   main:
    lbu $6, input ($3)	# load byte from this address
    beq $6, 92, exit	# branch if equal to 92 ( \ ) 
+   beq $6, 32, exit	# branch if equal to 32 ( space )
    add $6, $6, $8	# add the key to the byte
    sb $6, cipher ($3)	#store the byte in the cipher string
    addi $3, $3, 1
