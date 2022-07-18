@@ -5,6 +5,7 @@
  cipher: .asciiz "                                     "
  text1: .asciiz "Geben sie eine Zeichenkette ein (max. 40 chars): "
  text2: .asciiz "Geben sie eien Schlüssel ein (int): "
+ outputtxt: .asciiz " Verschlüsseltes wort : \n"
  
 .text
  
@@ -31,15 +32,20 @@
  
  # Caesar Cipher
   
-   la $3, input		# set $3 to address of the input string  
+   la $3, 0		# set $3 to address of the input string
   main:
-   lbu $6, ($3) 	# load byte from this address
+   lbu $6, input ($3)	# load byte from this address
    beq $6, 92, exit	# branch if equal to 92 ( \ ) 
    add $6, $6, $8	# add the key to the byte
-   sb $6, cipher	#store the byte in the cipher string
+   sb $6, cipher ($3)	#store the byte in the cipher string
    addi $3, $zero, 1
    j main
    
   exit:
+   la $2, 4
+   la $4, outputtxt
+   syscall
+   la $4, cipher
+   syscall
    
    
