@@ -38,7 +38,7 @@
    beq $6, 92, exit	# branch if equal to 92 ( \ ) 
    add $6, $6, $8	# add the key to the byte
    sb $6, cipher ($3)	#store the byte in the cipher string
-   addi $3, $zero, 1
+   addi $3, $3, 1
    j main
    
   exit:
