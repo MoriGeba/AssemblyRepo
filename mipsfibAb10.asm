@@ -26,11 +26,11 @@
   addi $9, $0, 2	# establishing the startlines for the fib calc
   #fib calc
   loop:
-  beq $5, $3, exit
+  beq $5, $3, exit	# comparison with the input n
   add $10, $8, $9
   sb $10, fibArray ($3)
   lb $8, fibArray ($3)
-  addi $3, $3, 2
+  addi $3, $3, 1
   j loop
   
   
