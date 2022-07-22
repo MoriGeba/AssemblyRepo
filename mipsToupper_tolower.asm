@@ -28,16 +28,37 @@
  li $v0, 5
  syscall
  move $v1, $v0
+ Toto:
+  beq $v1, 1, toupper
+  beq $v1, 2, tolower
+  # print invalid statement + loop to Toto
+  la $a0, invalid
+  li $v0, 4
+  syscall
+  j Toto
+  
+ # setting counter variables
+ li $t0, 0 		# setting t0 to 0
  
- beq $v1, 1, toupper
- beq $v1, 2, tolower
- la $a0, invalid
- li $v0, 4
- syscall
+ loopString:
+  lbu $t1, inputString ($t0)	# fetching input string[$t0] -> char in $t1
+  bgt $t1, 64, nextA		# branch if > A
+   toLarge:			
+    bgt $t1, 96, nexta		# branch if > a
+    addi $t0, $t0, 1		# adding 1 to $t0
+    j loopString		
+  nextA:
+   blt $t1, 91, tolower		# branch if < Z
+   j toLarge			
+  nexta:
+   blt $t1, 123, toupper	# branch if < z
+   addi $t0, $t0, 1		# adding 1 to $t0
+   j loopString
  
  toupper:
- 
+  
+  
+  
  tolower:
- 
- 
- 
+  
+  
