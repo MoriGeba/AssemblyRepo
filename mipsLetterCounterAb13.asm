@@ -32,7 +32,7 @@
  ncstr:
   lbu $t1, readString($a3)
   beq $t0, $t1, countUp
-  beq $t0, 10, exit
+  beq $t1, 10, exit
   addi $a3, $a3, 1
   j ncstr
   
@@ -42,6 +42,11 @@
   j ncstr
   
  exit:
-  
+  move $a0, $a2
+  li $v0, 1
+  syscall
+  la $a0, outputPromp
+  li $v0, 4
+  syscall
   
   
