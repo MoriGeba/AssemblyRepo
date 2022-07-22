@@ -42,6 +42,7 @@
  
  loopString:
   lbu $t1, inputString ($t0)	# fetching input string[$t0] -> char in $t1
+  beq $t1, 10, exit
   bgt $t1, 64, nextA		# branch if > A
    toLarge:			
     bgt $t1, 96, nexta		# branch if > a
@@ -56,9 +57,16 @@
    j loopString
  
  toupper:
-  
-  
+  sub  $t2, $t1, 32
+  sb $t2, outputString ($t0) 	#storing byte in OutputString
+  addi $t0, $t0, 1		#increment counter after uppering
   
  tolower:
+  addi $t2, $t1, 32
+  sb $t2, outputString ($t0)	#storing byte in OutputString
+  addi $t0, $t0, 1
+  
+  
+ exit:
   
   
