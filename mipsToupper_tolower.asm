@@ -66,7 +66,8 @@
   sb $t2, outputString ($t0)	#storing byte in OutputString
   addi $t0, $t0, 1
   
-  
  exit:
-  
+  la $a0, outputString
+  li $v0, 4
+  syscall
   
