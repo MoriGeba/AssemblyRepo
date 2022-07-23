@@ -38,9 +38,31 @@
   j Toto
   
  # setting counter variables
- li $t0, 0 		# setting t0 to 0
-
+ li $t0, 0  # setting t0 to 0	
  
+ tolower:
+  lbu $t1, inputString ($t0)
+  bleu $t1, 65, storeLower
+  bgeu $t1, 90, storeLower
+  beq $t1, 10, exit
+  addi $t1, $t1, 32
+  addi $t0, $t0, 1
+  j storeLower
+   
+ toupper:
+  lbu $t1, inputString ($t0)
+   bleu $t1, 97, storeUpper
+   bgeu $t1, 122, storeUpper
+   beq $t1, 10, exit
+   subi  $t1, $t1, 32
+   addi $t0, $t0, 1
+  j storeUpper
+ 
+ storeUpper:
+  sw $t1, outputString ($t0)
+ storeLower:
+  sw $t1, outputString ($t0)
+  j tolower
    
 # loopString:
 #  lbu $t1, inputString ($t0)	# fetching input string[$t0] -> char in $t1
