@@ -19,16 +19,15 @@
  li $v0, 8
  syscall
  
-  # outputPrompToto
- la $a0, inputPrompToto
- li $v0, 4
- syscall
- 
- # read Toto
- li $v0, 5
- syscall
- move $v1, $v0
  Toto:
+  # outputPrompToto
+  la $a0, inputPrompToto
+  li $v0, 4
+  syscall
+  # read Toto
+  li $v0, 5
+  syscall
+  move $v1, $v0
   beq $v1, 1, toupper
   beq $v1, 2, tolower
   # print invalid statement + loop to Toto
@@ -42,56 +41,31 @@
  
  tolower:
   lbu $t1, inputString ($t0)
-  bleu $t1, 65, storeLower
-  bgeu $t1, 90, storeLower
   beq $t1, 10, exit
+  bleu $t1, 64, storeLower
+  bgeu $t1, 91, storeLower
   addi $t1, $t1, 32
-  addi $t0, $t0, 1
   j storeLower
    
  toupper:
   lbu $t1, inputString ($t0)
-   bleu $t1, 97, storeUpper
-   bgeu $t1, 122, storeUpper
-   beq $t1, 10, exit
-   subi  $t1, $t1, 32
-   addi $t0, $t0, 1
+  beq $t1, 10, exit
+  bleu $t1, 96, storeUpper
+  bgeu $t1, 123, storeUpper
+  subi  $t1, $t1, 32
   j storeUpper
  
- storeUpper:
-  sw $t1, outputString ($t0)
  storeLower:
-  sw $t1, outputString ($t0)
+  sb $t1, outputString($t0)
+  addi $t0, $t0, 1
   j tolower
    
-# loopString:
-#  lbu $t1, inputString ($t0)	# fetching input string[$t0] -> char in $t1
-#  beq $t1, 10, exit
-#  bgt $t1, 64, nextA		# branch if > A
-#   toLarge:			
-#    bgt $t1, 96, nexta		# branch if > a
-#    addi $t0, $t0, 1		# adding 1 to $t0
-#    j loopString		
-#  nextA:
-#   blt $t1, 91, tolower		# branch if < Z
-#   j toLarge			
-#  nexta:
-#   blt $t1, 123, toupper	# branch if < z
-#   addi $t0, $t0, 1		# adding 1 to $t0
-#   j loopString
-# 
-# toupper:
-#  sub  $t2, $t1, 32
-#  sb $t2, outputString ($t0) 	#storing byte in OutputString
-#  addi $t0, $t0, 1		#increment counter after uppering
-#  
-# tolower:
-#  addi $t2, $t1, 32
-#  sb $t2, outputString ($t0)	#storing byte in OutputString
-#  addi $t0, $t0, 1
+ storeUpper:
+  sb $t1, outputString($t0)
+  addi $t0, $t0, 1
+  j toupper
   
  exit:
   la $a0, outputString
   li $v0, 4
   syscall
-  
