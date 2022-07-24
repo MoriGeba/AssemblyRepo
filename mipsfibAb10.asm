@@ -28,9 +28,9 @@
   loop:
   beq $5, $3, exit	# comparison with the input n
   add $10, $8, $9
-  sb $10, fibArray ($3)
+  sw $10, fibArray ($3)
   lb $8, fibArray ($3)
-  addi $3, $3, 1
+  addi $3, $3, 4
   j loop
   
   
