@@ -5,8 +5,6 @@
  inputPrompToto: .asciiz " Type (1) for toupper or (2) for tolower : "
  invalid: .asciiz "invalide input !! \n Try again !!! "
  
- 
- 
 .text
  # outputPrompString
  la $a0, inputPrompString
@@ -37,7 +35,7 @@
   j Toto
   
  # setting counter variables
- li $t0, 0  # setting t0 to 0	
+ li $t0, 0  # setting t0 to 0
  
  tolower:
   lbu $t1, inputString ($t0)
